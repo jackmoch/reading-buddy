@@ -17,7 +17,11 @@
   },
   "homepage": "https://github.com/jackmoch/reading-buddy#readme",
   "dependencies": {
-    "express": "^4.14.0"
+    "express": "^4.14.0",
+    "react": "^15.3.2",
+    "react-dom": "^15.3.2",
+    "react-redux": "^4.4.5",
+    "redux": "^3.6.0"
   },
   "devDependencies": {
     "babel-core": "^6.17.0",
@@ -25,6 +29,7 @@
     "babel-preset-latest": "^6.16.0",
     "babel-preset-react": "^6.16.0",
     "babel-preset-stage-0": "^6.16.0",
+    "redux-logger": "^2.7.0",
     "webpack": "^1.13.2",
     "webpack-dev-middleware": "^1.8.4"
   }
