@@ -1,0 +1,22 @@
+{
+  "name": "reading-buddy",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jackmoch/reading-buddy.git"
+  },
+  "author": "Jack Mocherman",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jackmoch/reading-buddy/issues"
+  },
+  "homepage": "https://github.com/jackmoch/reading-buddy#readme",
+  "dependencies": {
+    "express": "^4.14.0"
+  }
+}
