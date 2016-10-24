@@ -12,7 +12,7 @@ const logger = createLogger()
 const createStoreWithMiddleware = applyMiddleware(logger)(createStore)
 
 ReactDOM.render(
-	<Provider store={createStoreWithMiddleware(reducers)}
+	<Provider store={createStoreWithMiddleware(reducers)}>
 		<App />
 	</Provider >,
 	document.getElementById('entry')
