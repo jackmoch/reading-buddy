@@ -1,0 +1,21 @@
+{
+  "name": "reading-buddy",
+  "description": "",
+  "main": "server.js",
+  "authors": [
+    "Jack Mocherman"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/jackmoch/reading-buddy",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "client/lib",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7"
+  }
+}
