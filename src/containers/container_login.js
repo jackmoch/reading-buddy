@@ -1,18 +1,16 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { registerUser } from '../actions/index'
+import { login } from '../actions/index'
 import { browserHistory, Link } from 'react-router'
 
-class Register extends Component {
+class Login extends Component {
 
 	constructor(props) {
 		super(props)
 		this.state = {
 			existingUser: null,
 			user: {
-				first_name: '',
-				last_name: '',
 				username: '',
 				password: ''
 			}
@@ -33,21 +31,19 @@ class Register extends Component {
 
 	onFormSubmit(event) {
 		event.preventDefault()
-		this.props.registerUser(this.state.user)
-		.then(({payload}) => {
-			if(payload.data.msg) {
-				this.setState({
-					...this.state,
-					existingUser: payload.data.msg
-				})
-			} else {
-				browserHistory.push('/test')
-			}
-		})
+		this.props.login(this.state.user)
+		// .then(({payload}) => {
+		// 	if(payload.data.msg) {
+		// 		this.setState({
+		// 			...this.state,
+		// 			existingUser: payload.data.msg
+		// 		})
+		// 	} else {
+		// 		browserHistory.push('/test')
+		// 	}
+		// })
 		this.setState({ 
 			user: {
-				first_name: '',
-				last_name: '',
 				username: '',
 				password: ''
 			}
@@ -60,8 +56,7 @@ class Register extends Component {
 				<div className="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
 					<div className="panel panel-default">
 						<div className="panel-heading">
-							<h3 className="panel-title">Sign up for Reading Buddy</h3>
-							{ this.state.existingUser ? <div>{this.state.existingUser}</div> : ''}
+							<h3 className="panel-title">Log In To Reading Buddy</h3>
 						</div>
 
 						<div className="panel-body">
@@ -70,33 +65,6 @@ class Register extends Component {
 			    			onSubmit={this.onFormSubmit}>
 			    			<div className="row">
 			    				
-			    				<div className="col-xs-6 col-sm-6 col-md-6">
-			    					<div className="form-group">
-			                <input 
-			                	type="text" 
-			                	name="first_name" 
-			                	id="first_name" 
-			                	className="form-control input-sm" 
-			                	placeholder="First Name" 
-			                	value={this.state.user.first_name}
-			                	onChange={this.onFieldChanged}/>
-			    					</div>
-			    				</div>
-			    				
-			    				<div className="col-xs-6 col-sm-6 col-md-6">
-			    					<div className="form-group">
-			    						<input 
-			    							type="text" 
-			    							name="last_name" 
-			    							id="last_name" 
-			    							className="form-control input-sm" 
-			    							placeholder="Last Name" 
-			    							value={this.state.user.last_name}
-			    							onChange={this.onFieldChanged}/>
-			    					</div>
-			    				</div>
-			    			</div>
-
 			    			<div className="form-group">
 			    				<input 
 			    					type="username" 
@@ -119,12 +87,13 @@ class Register extends Component {
 	    							onChange={this.onFieldChanged}/>
 	    					</div>
 			    			
-			    			<input type="submit" value="Register" className="btn btn-info btn-block" />
+			    			<input type="submit" value="Login" className="btn btn-info btn-block" />
 
-			    			<Link to="/login" className="btn btn-info btn-block">
-									Login
+			    			<Link to="/" className="btn btn-info btn-block">
+									Register
 								</Link>
-			    		
+
+			    			</div>
 			    		</form>
 			    	</div>
 					</div>
@@ -135,7 +104,7 @@ class Register extends Component {
 }
 
 function mapDispatchToProps(dispatch) {
-	return bindActionCreators({ registerUser }, dispatch)
+	return bindActionCreators({ login }, dispatch)
 }
 
-export default connect(null, mapDispatchToProps)(Register)
+export default connect(null, mapDispatchToProps)(Login)

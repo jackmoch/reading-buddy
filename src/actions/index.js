@@ -1,6 +1,7 @@
 import axios from 'axios'
 
 export const REGISTER_USER = 'REGISTER_USER'
+export const LOGIN = 'LOGIN'
 export const ROOT_URL = 'http://localhost:3000'
 
 export function registerUser(user) {
@@ -9,6 +10,16 @@ export function registerUser(user) {
 
 	return{
 		type: REGISTER_USER,
+		payload: request
+	}
+}
+
+export function login(user) {
+	const url = `${ROOT_URL}/login`
+	const request = axios.post(url, user)
+
+	return{
+		type: LOGIN,
 		payload: request
 	}
 }
