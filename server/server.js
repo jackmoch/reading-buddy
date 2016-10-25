@@ -2,6 +2,8 @@ const express = require('express')
 const webpackMiddleware = require("webpack-dev-middleware")
 const webpack = require('webpack')
 const { json } = require('body-parser')
+const { connect } = require('./db/database')
+const routes = require('./routes')
 
 const app = express()
 const port = process.env.PORT || 3000
@@ -37,10 +39,12 @@ app.use(webpackMiddleware(webpack({
     publicPath: "/assets/",
 }));
 
-app.post('/registerUser', (req, res, err) => {
-  console.log(req.body)
-})
+app.use(routes)
 
-app.listen(port, () => {
-	console.log(`Listening on port ${port}`)
-})
+connect()
+  .then(() => {
+    app.listen(port, () =>
+      console.log(`Listening on port: ${port}`)
+    )
+  })
+  .catch(console.error)
