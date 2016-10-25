@@ -2,12 +2,14 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { registerUser } from '../actions/index'
+import { browserHistory } from 'react-router'
 
 class Register extends Component {
 
 	constructor(props) {
 		super(props)
 		this.state = {
+			existingUser: null,
 			user: {
 				first_name: '',
 				last_name: '',
@@ -16,51 +18,32 @@ class Register extends Component {
 			}
 		}
 		this.onFormSubmit = this.onFormSubmit.bind(this)
-		this.onFirstNameChange = this.onFirstNameChange.bind(this)
-		this.onLastNameChange = this.onLastNameChange.bind(this)
-		this.onUsernameChange = this.onUsernameChange.bind(this)
-		this.onPasswordChange = this.onPasswordChange.bind(this)
+		this.onFieldChanged = this.onFieldChanged.bind(this)
 	}
 
-	onFirstNameChange(event) {
-		this.setState({
-			user: {
-				...this.state.user,
-				first_name: event.target.value
-			}
-		})
-	}
-
-	onLastNameChange(event) {
-		this.setState({
-			user: {
-				...this.state.user,
-				last_name: event.target.value
-			}
-		})
-	}
-
-	onUsernameChange(event) {
-		this.setState({
-			user: {
-				...this.state.user,
-				username: event.target.value
-			}
-		})
-	}
-
-	onPasswordChange(event) {
-		this.setState({
-			user: {
-				...this.state.user,
-				password: event.target.value
-			}
-		})
-	}
+	onFieldChanged (event) {
+    this.setState({
+    	...this.state,
+    	user: {
+    		...this.state.user,
+    		[event.target.name]: event.target.value
+    	}
+    })
+  }
 
 	onFormSubmit(event) {
 		event.preventDefault()
 		this.props.registerUser(this.state.user)
+		.then(({payload}) => {
+			if(payload.data.msg) {
+				this.setState({
+					...this.state,
+					existingUser: payload.data.msg
+				})
+			} else {
+				browserHistory.push('/test')
+			}
+		})
 		this.setState({ 
 			user: {
 				first_name: '',
@@ -78,6 +61,7 @@ class Register extends Component {
 					<div className="panel panel-default">
 						<div className="panel-heading">
 							<h3 className="panel-title">Sign up for Reading Buddy</h3>
+							{ this.state.existingUser ? <div>{this.state.existingUser}</div> : ''}
 						</div>
 
 						<div className="panel-body">
@@ -95,7 +79,7 @@ class Register extends Component {
 			                	className="form-control input-sm" 
 			                	placeholder="First Name" 
 			                	value={this.state.user.first_name}
-			                	onChange={this.onFirstNameChange}/>
+			                	onChange={this.onFieldChanged}/>
 			    					</div>
 			    				</div>
 			    				
@@ -108,20 +92,20 @@ class Register extends Component {
 			    							className="form-control input-sm" 
 			    							placeholder="Last Name" 
 			    							value={this.state.user.last_name}
-			    							onChange={this.onLastNameChange}/>
+			    							onChange={this.onFieldChanged}/>
 			    					</div>
 			    				</div>
 			    			</div>
 
 			    			<div className="form-group">
 			    				<input 
-			    					type="email" 
-			    					name="email" 
-			    					id="email" 
+			    					type="username" 
+			    					name="username" 
+			    					id="username" 
 			    					className="form-control input-sm" 
-			    					placeholder="Email Address" 
+			    					placeholder="Username" 
 			    					value={this.state.user.username}
-			    					onChange={this.onUsernameChange}/>
+			    					onChange={this.onFieldChanged}/>
 			    			</div>
 
 	    					<div className="form-group">
@@ -132,7 +116,7 @@ class Register extends Component {
 	    							className="form-control input-sm" 
 	    							placeholder="Password"
 	    							value={this.state.user.password} 
-	    							onChange={this.onPasswordChange}/>
+	    							onChange={this.onFieldChanged}/>
 	    					</div>
 			    			
 			    			<input type="submit" value="Register" className="btn btn-info btn-block" />
