@@ -18,8 +18,8 @@ export default class Routes extends Component {
 		return (
 			<Router history={browserHistory} >
 				<Route path="/" component={App}>
-					<IndexRoute component={Register} />
-					<Route path="login" component={Login} />
+					<IndexRoute component={Login} />
+					<Route path="register" component={Register} />
 					<Route path="test" component={Test} />
 				</Route>
 			</Router >
