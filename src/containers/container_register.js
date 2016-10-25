@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { registerUser } from '../actions/index'
-import { browserHistory } from 'react-router'
+import { browserHistory, Link } from 'react-router'
 
 class Register extends Component {
 
@@ -120,6 +120,10 @@ class Register extends Component {
 	    					</div>
 			    			
 			    			<input type="submit" value="Register" className="btn btn-info btn-block" />
+
+			    			<Link to="/login" className="btn btn-info btn-block">
+									Login
+								</Link>
 			    		
 			    		</form>
 			    	</div>
