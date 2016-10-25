@@ -5,7 +5,7 @@ const bcrypt = require('bcrypt')
 const router = Router()
 const User = require('../models/user')
 
-router.post('/register', ({ body: { username, password, first_name, last_name, email } }, res, err) => {
+router.post('/register', ({ body: { username, password, first_name, last_name} }, res, err) => {
 	User.findOne({ username })
 		.then(user => {
 			if (user) {
@@ -22,7 +22,7 @@ router.post('/register', ({ body: { username, password, first_name, last_name, e
 				})
 			}
 		})
-		.then(hash => User.create({ username, password: hash, email, first_name, last_name }))
+		.then(hash => User.create({ username, password: hash, first_name, last_name }))
 		.then((user) => res.json(user.id))
 		.catch(err)
 })
