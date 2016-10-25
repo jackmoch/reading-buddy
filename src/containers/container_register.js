@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { registerUser } from '../actions/index'
 
-export default class Register extends Component {
+class Register extends Component {
 
 	constructor(props) {
 		super(props)
@@ -57,7 +60,7 @@ export default class Register extends Component {
 
 	onFormSubmit(event) {
 		event.preventDefault()
-		console.log(this.state.user)
+		this.props.registerUser(this.state.user)
 		this.setState({ 
 			user: {
 				first_name: '',
@@ -76,7 +79,7 @@ export default class Register extends Component {
 						<div className="panel-heading">
 							<h3 className="panel-title">Sign up for Reading Buddy</h3>
 						</div>
-						
+
 						<div className="panel-body">
 			    		<form 
 			    			role="form" 
@@ -142,3 +145,9 @@ export default class Register extends Component {
 		)
 	}
 }
+
+function mapDispatchToProps(dispatch) {
+	return bindActionCreators({ registerUser }, dispatch)
+}
+
+export default connect(null, mapDispatchToProps)(Register)
