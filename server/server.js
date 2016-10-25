@@ -1,6 +1,7 @@
 const express = require('express')
 const webpackMiddleware = require("webpack-dev-middleware")
 const webpack = require('webpack')
+const { json } = require('body-parser')
 
 const app = express()
 const port = process.env.PORT || 3000
@@ -8,6 +9,7 @@ const port = process.env.PORT || 3000
 app.set('port', port)
 
 app.use(express.static('client'))
+app.use(json())
 app.use(webpackMiddleware(webpack({
   // webpack options
   // webpackMiddleware takes a Compiler object as first parameter
@@ -34,6 +36,10 @@ app.use(webpackMiddleware(webpack({
     },
     publicPath: "/assets/",
 }));
+
+app.post('/registerUser', (req, res, err) => {
+  console.log(req.body)
+})
 
 app.listen(port, () => {
 	console.log(`Listening on port ${port}`)
