@@ -3,6 +3,8 @@ const webpackMiddleware = require("webpack-dev-middleware")
 const webpack = require('webpack')
 const { json } = require('body-parser')
 const { connect } = require('./db/database')
+const session = require('express-session')
+const RedisStore = require('connect-redis')(session)
 const routes = require('./routes')
 
 const app = express()
@@ -38,6 +40,19 @@ app.use(webpackMiddleware(webpack({
     },
     publicPath: "/assets/",
 }));
+
+app.use(session({
+  'store': new RedisStore({
+    url: process.env.REDIS_URL || 'redis://localhost:6379'
+  }),
+  'secret': 'supersecretkey' //fine to put this on github
+}))
+
+
+app.use((req, res, next) => {
+  app.locals.userId = req.session.userId
+  next()
+})
 
 app.use(routes)
 
