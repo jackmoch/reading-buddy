@@ -64,36 +64,40 @@ class Login extends Component {
 			    			role="form" 
 			    			onSubmit={this.onFormSubmit}>
 			    			<div className="row">
-			    				
-			    			<div className="form-group">
-			    				<input 
-			    					type="username" 
-			    					name="username" 
-			    					id="username" 
-			    					className="form-control input-sm" 
-			    					placeholder="Username" 
-			    					value={this.state.user.username}
-			    					onChange={this.onFieldChanged}/>
-			    			</div>
+			    			
+				    			<div className="col-xs-6 col-sm-6 col-md-6">	
+					    			<div className="form-group">
+					    				<input 
+					    					type="username" 
+					    					name="username" 
+					    					id="username" 
+					    					className="form-control input-sm" 
+					    					placeholder="Username" 
+					    					value={this.state.user.username}
+					    					onChange={this.onFieldChanged}/>
+					    			</div>
+					    		</div>
 
-	    					<div className="form-group">
-	    						<input 
-	    							type="password" 
-	    							name="password" 
-	    							id="password" 
-	    							className="form-control input-sm" 
-	    							placeholder="Password"
-	    							value={this.state.user.password} 
-	    							onChange={this.onFieldChanged}/>
-	    					</div>
+					    		<div className="col-xs-6 col-sm-6 col-md-6">
+			    					<div className="form-group">
+			    						<input 
+			    							type="password" 
+			    							name="password" 
+			    							id="password" 
+			    							className="form-control input-sm" 
+			    							placeholder="Password"
+			    							value={this.state.user.password} 
+			    							onChange={this.onFieldChanged}/>
+			    					</div>
+			    				</div>
+			    			</div>
 			    			
 			    			<input type="submit" value="Login" className="btn btn-info btn-block" />
 
-			    			<Link to="/" className="btn btn-info btn-block">
+			    			<Link to="/register" className="btn btn-info btn-block">
 									Register
 								</Link>
 
-			    			</div>
 			    		</form>
 			    	</div>
 					</div>
