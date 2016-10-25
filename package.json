@@ -18,9 +18,11 @@
   "homepage": "https://github.com/jackmoch/reading-buddy#readme",
   "dependencies": {
     "axios": "^0.15.2",
+    "bcrypt": "^0.8.7",
     "body-parser": "^1.15.2",
     "bower": "^1.7.9",
     "express": "^4.14.0",
+    "mongoose": "^4.6.5",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
     "react-redux": "^4.4.5",
