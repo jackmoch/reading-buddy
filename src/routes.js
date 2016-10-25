@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
-import { Route, IndexRoute } from 'react-router'
+import { Route, IndexRoute, Router, browserHistory } from 'react-router'
 
 import App from './components/app'
 import Register from './containers/container_register'
+import Login from './containers/container_login'
 
 class Test extends Component {
 	render() {
@@ -12,9 +13,16 @@ class Test extends Component {
 	}
 }
 
-export default (
-	<Route path="/" component={App}>
-		<IndexRoute component={Register} />
-		<Route component={Test} path="/test" />
-	</Route>
-)
+export default class Routes extends Component {
+	render() {
+		return (
+			<Router history={browserHistory} >
+				<Route path="/" component={App}>
+					<IndexRoute component={Register} />
+					<Route path="login" component={Login} />
+					<Route path="test" component={Test} />
+				</Route>
+			</Router >
+		)
+	}
+}
