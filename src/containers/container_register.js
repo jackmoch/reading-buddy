@@ -121,7 +121,7 @@ class Register extends Component {
 			    			
 			    			<input type="submit" value="Register" className="btn btn-info btn-block" />
 
-			    			<Link to="/login" className="btn btn-info btn-block">
+			    			<Link to="/" className="btn btn-info btn-block">
 									Login
 								</Link>
 			    		
