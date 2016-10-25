@@ -32,16 +32,16 @@ class Login extends Component {
 	onFormSubmit(event) {
 		event.preventDefault()
 		this.props.login(this.state.user)
-		// .then(({payload}) => {
-		// 	if(payload.data.msg) {
-		// 		this.setState({
-		// 			...this.state,
-		// 			existingUser: payload.data.msg
-		// 		})
-		// 	} else {
-		// 		browserHistory.push('/test')
-		// 	}
-		// })
+		.then(({payload}) => {
+			if(payload.data.msg) {
+				this.setState({
+					...this.state,
+					existingUser: payload.data.msg
+				})
+			} else {
+				browserHistory.push('/test')
+			}
+		})
 		this.setState({ 
 			user: {
 				username: '',
@@ -57,6 +57,7 @@ class Login extends Component {
 					<div className="panel panel-default">
 						<div className="panel-heading">
 							<h3 className="panel-title">Log In To Reading Buddy</h3>
+							{ this.state.existingUser ? <div>{this.state.existingUser}</div> : ''}
 						</div>
 
 						<div className="panel-body">
