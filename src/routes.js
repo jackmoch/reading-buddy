@@ -4,14 +4,7 @@ import { Route, IndexRoute, Router, browserHistory } from 'react-router'
 import App from './components/app'
 import Register from './containers/container_register'
 import Login from './containers/container_login'
-
-class Test extends Component {
-	render() {
-		return (
-			<h1>Testing</h1>
-		)
-	}
-}
+import Home from './containers/container_home'
 
 export default class Routes extends Component {
 	render() {
@@ -20,7 +13,7 @@ export default class Routes extends Component {
 				<Route path="/" component={App}>
 					<IndexRoute component={Login} />
 					<Route path="register" component={Register} />
-					<Route path="test" component={Test} />
+					<Route path="home" component={Home} />
 				</Route>
 			</Router >
 		)

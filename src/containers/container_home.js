@@ -30,13 +30,17 @@ class Home extends Component {
 
 	render() {
 		return(
-			<div>
-				<SearchBar onSearchTermChange={this.bookSearch.bind(this)} />
-				<input onClick={this.formatSearch.bind(this)} type="submit" value="Search" className="btn btn-info btn-block" />
-				<BookList books={this.props.searchedBooks ? this.props.searchedBooks : [{ volumeInfo: {title: 'books'}, id: 1}]} />
-				<Link to="home" className="btn btn-info btn-block">
-					Home
-				</Link>
+			<div className="row centered-form">
+				<div className="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+					<div className="panel panel-default">
+						<SearchBar onSearchTermChange={this.bookSearch.bind(this)} />
+						<input onClick={this.formatSearch.bind(this)} type="submit" value="Search" className="btn btn-info btn-block" />
+						<BookList books={this.props.searchedBooks} parentComponent={'home'}/>
+						<Link to="home" className="btn btn-info btn-block">
+							Home
+						</Link>
+					</div>
+				</div>
 			</div>	
 		)
 	}
