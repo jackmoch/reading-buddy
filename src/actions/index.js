@@ -36,9 +36,12 @@ export function searchBooks(searchTerm) {
 	}
 }
 
-export function addToWishlist(book) {
+export function addToWishlist(bookId) {
+	const url = `${ROOT_URL}/api/addToWishlist`
+	const request = axios.post(url, {bookId})
+
 	return {
 		type: ADD_TO_WISHLIST,
-		payload: book
+		payload: request
 	}
 }
