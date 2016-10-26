@@ -5,6 +5,7 @@ import App from './components/app'
 import Register from './containers/container_register'
 import Login from './containers/container_login'
 import Home from './containers/container_home'
+import Wishlist from './containers/container_wishlist'
 
 export default class Routes extends Component {
 	render() {
@@ -14,6 +15,7 @@ export default class Routes extends Component {
 					<IndexRoute component={Login} />
 					<Route path="register" component={Register} />
 					<Route path="home" component={Home} />
+					<Route path="wishlist" component={Wishlist} />
 				</Route>
 			</Router >
 		)
