@@ -1,9 +1,12 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { searchBooks } from '../actions/index'
 
 import SearchBar from '../components/search_bar'
 
-export default class Home extends Component {
+class Home extends Component {
 
 	constructor(props) {
 		super(props);
@@ -17,7 +20,7 @@ export default class Home extends Component {
 	}
 
 	submitSearch(searchTerm) {
-		console.log(searchTerm)
+		this.props.searchBooks(searchTerm)
 	}
 
 	formatSearch() {
@@ -36,3 +39,9 @@ export default class Home extends Component {
 		)
 	}
 }
+
+function mapDispatchToProps(dispatch) {
+	return bindActionCreators({ searchBooks }, dispatch)
+}
+
+export default connect(null, mapDispatchToProps)(Home)
