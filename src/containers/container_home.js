@@ -5,6 +5,7 @@ import { bindActionCreators } from 'redux'
 import { searchBooks } from '../actions/index'
 
 import SearchBar from '../components/search_bar'
+import BookList from '../components/book_list'
 
 class Home extends Component {
 
@@ -32,6 +33,7 @@ class Home extends Component {
 			<div>
 				<SearchBar onSearchTermChange={this.bookSearch.bind(this)} />
 				<input onClick={this.formatSearch.bind(this)} type="submit" value="Search" className="btn btn-info btn-block" />
+				<BookList books={this.props.searchedBooks ? this.props.searchedBooks : [{ volumeInfo: {title: 'books'}, id: 1}]} />
 				<Link to="home" className="btn btn-info btn-block">
 					Home
 				</Link>
@@ -44,4 +46,8 @@ function mapDispatchToProps(dispatch) {
 	return bindActionCreators({ searchBooks }, dispatch)
 }
 
-export default connect(null, mapDispatchToProps)(Home)
+function mapStateToProps(state) {
+  return { searchedBooks: state.searchedBooks }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home)
