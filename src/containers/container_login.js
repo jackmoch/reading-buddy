@@ -39,13 +39,13 @@ class Login extends Component {
 					existingUser: payload.data.msg
 				})
 			} else {
+				this.setState({ 
+					user: {
+						username: '',
+						password: ''
+					}
+				})
 				browserHistory.push('/home')
-			}
-		})
-		this.setState({ 
-			user: {
-				username: '',
-				password: ''
 			}
 		})
 	}
