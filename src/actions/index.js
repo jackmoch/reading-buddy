@@ -26,8 +26,11 @@ export function login(user) {
 }
 
 export function searchBooks(searchTerm) {
+	const url = `https://www.googleapis.com/books/v1/volumes?q=${searchTerm}`
+	const request = axios.get(url)
+
 	return {
 		type: SEARCH_BOOKS,
-		payload: searchTerm
+		payload: request
 	}
 }
