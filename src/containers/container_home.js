@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { searchBooks } from '../actions/index'
+import { searchBooks, addToWishlist } from '../actions/index'
 
 import SearchBar from '../components/search_bar'
 import BookList from '../components/book_list'
@@ -28,6 +28,10 @@ class Home extends Component {
 		this.submitSearch(this.state.term.split(' ').join('+'))
 	}
 
+	submitToWishlist(book) {
+		this.props.addToWishlist(book)
+	}
+
 	render() {
 		return(
 			<div className="row centered-form">
@@ -35,7 +39,10 @@ class Home extends Component {
 					<div className="panel panel-default">
 						<SearchBar onSearchTermChange={this.bookSearch.bind(this)} />
 						<input onClick={this.formatSearch.bind(this)} type="submit" value="Search" className="btn btn-info btn-block" />
-						<BookList books={this.props.searchedBooks} parentComponent={'home'}/>
+						<BookList 
+							books={this.props.searchedBooks} 
+							parentComponent={'home'}
+							clickedAddToWishlist={ book => this.submitToWishlist(book)}/>
 						<Link to="home" className="btn btn-info btn-block">
 							Home
 						</Link>
@@ -47,7 +54,7 @@ class Home extends Component {
 }
 
 function mapDispatchToProps(dispatch) {
-	return bindActionCreators({ searchBooks }, dispatch)
+	return bindActionCreators({ searchBooks, addToWishlist }, dispatch)
 }
 
 function mapStateToProps(state) {
