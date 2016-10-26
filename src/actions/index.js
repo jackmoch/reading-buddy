@@ -3,6 +3,7 @@ import axios from 'axios'
 export const REGISTER_USER = 'REGISTER_USER'
 export const LOGIN = 'LOGIN'
 export const SEARCH_BOOKS = 'SEARCH_BOOKS'
+export const ADD_TO_WISHLIST = 'ADD_TO_WISHLIST'
 export const ROOT_URL = 'http://localhost:3000'
 
 export function registerUser(user) {
@@ -32,5 +33,12 @@ export function searchBooks(searchTerm) {
 	return {
 		type: SEARCH_BOOKS,
 		payload: request
+	}
+}
+
+export function addToWishlist(book) {
+	return {
+		type: ADD_TO_WISHLIST,
+		payload: book
 	}
 }
