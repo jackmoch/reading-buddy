@@ -4,6 +4,8 @@ export const REGISTER_USER = 'REGISTER_USER'
 export const LOGIN = 'LOGIN'
 export const SEARCH_BOOKS = 'SEARCH_BOOKS'
 export const ADD_TO_WISHLIST = 'ADD_TO_WISHLIST'
+export const GET_WISHLIST = 'GET_WISHLIST'
+
 export const ROOT_URL = 'http://localhost:3000'
 
 export function registerUser(user) {
@@ -42,6 +44,16 @@ export function addToWishlist(bookId) {
 
 	return {
 		type: ADD_TO_WISHLIST,
+		payload: request
+	}
+}
+
+export function getWishlist() {
+	const url = `${ROOT_URL}/api/getWishlist`
+	const request = axios.get(url)
+
+	return {
+		type: GET_WISHLIST,
 		payload: request
 	}
 }
