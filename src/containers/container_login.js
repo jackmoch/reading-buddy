@@ -39,7 +39,7 @@ class Login extends Component {
 					existingUser: payload.data.msg
 				})
 			} else {
-				browserHistory.push('/test')
+				browserHistory.push('/home')
 			}
 		})
 		this.setState({ 
