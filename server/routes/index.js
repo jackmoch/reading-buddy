@@ -12,4 +12,6 @@ router.post('/login', session.login)
 
 router.post('/api/addToWishlist', wishlist.addToWishlist)
 
+router.get('/api/getWishlist', wishlist.getWishlist)
+
 module.exports = router
