@@ -1,11 +1,11 @@
 import React, { PropTypes } from 'react'
 
-const Book = (book) => {
+const Book = ({ volumeInfo, parentComponent, clickedAddToWishlist }) => {
   return(
     <li>
-      {book.volumeInfo.title}
-      { book.volumeInfo.imageLinks ? <img src={book.volumeInfo.imageLinks.thumbnail} /> : null }
-      { book.parentComponent === 'home' ? <button className="btn btn-info btn-block">Add To WishList</button> : null}
+      { volumeInfo.title }
+      { volumeInfo.imageLinks ? <img src={volumeInfo.imageLinks.thumbnail} /> : null }
+      { parentComponent === 'home' ? <button className="btn btn-info btn-block" onClick={ () => clickedAddToWishlist(volumeInfo)}>Add To WishList</button> : null}
     </li>
   )
 }
