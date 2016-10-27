@@ -7,7 +7,15 @@ module.exports.addToWishlist = ({ session: { userId }, body: { bookId } }, res, 
 	User
 		.findByIdAndUpdate( userId, { $push: { "wishlist": bookId } } )
 		.then((data) => {
-			console.log(data)
+			res.json({data})
+		})
+}
+
+module.exports.removeFromWishlist = ({ session: { userId }, body: { bookId } }, res, err) => {
+	User
+		.findByIdAndUpdate( userId, { $pull: { "wishlist": bookId } } )
+		.then((data) => {
+			res.json({data})
 		})
 }
 
