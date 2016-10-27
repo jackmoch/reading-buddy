@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { searchBooks, addToWishlist, getWishlist } from '../actions/index'
+import { searchBooks, addToWishlist, getWishlist, addToCurrentlyReading, getCurrentlyReading } from '../actions/index'
 
 import SearchBar from '../components/search_bar'
 import BookList from '../components/book_list'
@@ -11,6 +11,7 @@ class Home extends Component {
 
 	componentWillMount() {
 		this.props.getWishlist()
+		this.props.getCurrentlyReading()
 	}
 
 	constructor(props) {
@@ -39,6 +40,13 @@ class Home extends Component {
 			})
 	}
 
+	submitToCurrentlyReading(book) {
+		this.props.addToCurrentlyReading(book)
+			.then(() => {
+				this.props.getCurrentlyReading()
+			})
+	}
+
 	render() {
 		return(
 			<div className="row centered-form">
@@ -49,10 +57,14 @@ class Home extends Component {
 						<Link to="wishlist" className="btn btn-info btn-block">
 							Wishlist
 						</Link>
+						<Link to="currentlyReading" className="btn btn-info btn-block">
+							CurrentlyReading
+						</Link>
 						<BookList 
 							books={this.props.searchedBooks} 
 							parentComponent={'home'}
-							clickedAddToWishlist={ book => this.submitToWishlist(book)}/>
+							clickedAddToWishlist={ book => this.submitToWishlist(book)}
+							clickedAddToCurrentlyReading={ book => this.submitToCurrentlyReading(book) }/>
 						<Link to="home" className="btn btn-info btn-block">
 							Home
 						</Link>
@@ -64,7 +76,7 @@ class Home extends Component {
 }
 
 function mapDispatchToProps(dispatch) {
-	return bindActionCreators({ searchBooks, addToWishlist, getWishlist }, dispatch)
+	return bindActionCreators({ searchBooks, addToWishlist, getWishlist, addToCurrentlyReading, getCurrentlyReading }, dispatch)
 }
 
 function mapStateToProps(state) {

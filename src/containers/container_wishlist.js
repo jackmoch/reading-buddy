@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { getWishlist, removeFromWishlist } from '../actions/index'
+import { getWishlist, removeFromWishlist, addToCurrentlyReading, getCurrentlyReading } from '../actions/index'
 
 import BookList from '../components/book_list'
 
@@ -18,6 +18,13 @@ class Wishlist extends Component {
 			})
 	}
 
+	submitToCurrentlyReading(book) {
+		this.props.addToCurrentlyReading(book)
+			.then(() => {
+				this.props.getCurrentlyReading()
+			})
+	}
+
 	render() {
 		return(
 			<div className="row centered-form">
@@ -27,6 +34,7 @@ class Wishlist extends Component {
 						<BookList 
 							books={this.props.Wishlist} 
 							parentComponent={'wishlist'}
+							clickedAddToCurrentlyReading={ book => this.submitToCurrentlyReading(book) }
 							clickedRemoveFromWishlist={ id => this.sumbitRemoveFromWishlist(id)}/>
 					</div>
 				</div>
@@ -40,7 +48,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-	return bindActionCreators({ getWishlist, removeFromWishlist }, dispatch)
+	return bindActionCreators({ getWishlist, removeFromWishlist, addToCurrentlyReading, getCurrentlyReading }, dispatch)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Wishlist)

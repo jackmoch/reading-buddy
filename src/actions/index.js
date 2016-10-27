@@ -3,6 +3,9 @@ import axios from 'axios'
 export const REGISTER_USER = 'REGISTER_USER'
 export const LOGIN = 'LOGIN'
 export const SEARCH_BOOKS = 'SEARCH_BOOKS'
+export const ADD_TO_CURRENTLY_READING = 'ADD_TO_CURRENTLY_READING'
+export const REMOVE_FROM_CURRENTLY_READING = 'REMOVE_FROM_CURRENTLY_READING'
+export const GET_CURRENTLY_READING = 'GET_CURRENTLY_READING'
 export const ADD_TO_WISHLIST = 'ADD_TO_WISHLIST'
 export const REMOVE_FROM_WISHLIST = 'REMOVE_FROM_WISHLIST'
 export const GET_WISHLIST = 'GET_WISHLIST'
@@ -35,6 +38,36 @@ export function searchBooks(searchTerm) {
 
 	return {
 		type: SEARCH_BOOKS,
+		payload: request
+	}
+}
+
+export function addToCurrentlyReading(bookId) {
+	const url = `${ROOT_URL}/api/addToCurrentlyReading`
+	const request = axios.post(url, {bookId})
+
+	return {
+		type: ADD_TO_CURRENTLY_READING,
+		payload: request
+	}
+}
+
+export function removeFromCurrentlyReading(bookId) {
+	const url = `${ROOT_URL}/api/removeFromCurrentlyReading`
+	const request = axios.post(url, {bookId})
+
+	return {
+		type: REMOVE_FROM_CURRENTLY_READING,
+		payload: request
+	}
+}
+
+export function getCurrentlyReading() {
+	const url = `${ROOT_URL}/api/getCurrentlyReading`
+	const request = axios.get(url)
+
+	return {
+		type: GET_CURRENTLY_READING,
 		payload: request
 	}
 }
