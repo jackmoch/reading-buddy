@@ -5,11 +5,13 @@ const { json } = require('body-parser')
 const { connect } = require('./db/database')
 const session = require('express-session')
 const RedisStore = require('connect-redis')(session)
+var history = require('connect-history-api-fallback');
 const routes = require('./routes')
 
 const debug = true
 
 const app = express()
+app.use(history())
 const port = process.env.PORT || 3000
 
 app.set('port', port)
