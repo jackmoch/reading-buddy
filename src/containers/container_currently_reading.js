@@ -1,14 +1,16 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { getCurrentlyReading, removeFromCurrentlyReading, addToWishlist, getWishlist } from '../actions/index'
+import { getCurrentlyReading, removeFromCurrentlyReading, addToWishlist, getWishlist, addToCompleted, getCompleted } from '../actions/index'
 
 import BookList from '../components/book_list'
 
 class CurrentlyReading extends Component {
 
 	componentWillMount() {
+		this.props.getWishlist()
 		this.props.getCurrentlyReading()
+		this.props.getCompleted()
 	}
 
 	sumbitRemoveFromCurrentlyReading(id) {
@@ -25,6 +27,13 @@ class CurrentlyReading extends Component {
 			})
 	}
 
+	submitToCompleted(book) {
+		this.props.addToCompleted(book)
+			.then(() => {
+				this.props.getCompleted()
+			})
+	}
+
 	render() {
 		return(
 			<div className="row centered-form">
@@ -35,6 +44,7 @@ class CurrentlyReading extends Component {
 							books={this.props.CurrentlyReading} 
 							parentComponent={'currently_reading'}
 							clickedAddToWishlist={ book => this.submitToWishlist(book)}
+							clickedAddToCompleted={ book => this.submitToCompleted(book) }
 							clickedRemoveFromCurrentlyReading={ id => this.sumbitRemoveFromCurrentlyReading(id)}
 							/>
 					</div>
@@ -49,7 +59,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-	return bindActionCreators({ getCurrentlyReading, removeFromCurrentlyReading, addToWishlist, getWishlist }, dispatch)
+	return bindActionCreators({ getCurrentlyReading, removeFromCurrentlyReading, addToWishlist, getWishlist, addToCompleted, getCompleted }, dispatch)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(CurrentlyReading)
