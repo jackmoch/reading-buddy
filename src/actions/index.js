@@ -4,6 +4,7 @@ export const REGISTER_USER = 'REGISTER_USER'
 export const LOGIN = 'LOGIN'
 export const SEARCH_BOOKS = 'SEARCH_BOOKS'
 export const ADD_TO_WISHLIST = 'ADD_TO_WISHLIST'
+export const REMOVE_FROM_WISHLIST = 'REMOVE_FROM_WISHLIST'
 export const GET_WISHLIST = 'GET_WISHLIST'
 
 export const ROOT_URL = 'http://localhost:3000'
@@ -44,6 +45,16 @@ export function addToWishlist(bookId) {
 
 	return {
 		type: ADD_TO_WISHLIST,
+		payload: request
+	}
+}
+
+export function removeFromWishlist(bookId) {
+	const url = `${ROOT_URL}/api/removeFromWishList`
+	const request = axios.post(url, {bookId})
+
+	return {
+		type: REMOVE_FROM_WISHLIST,
 		payload: request
 	}
 }
