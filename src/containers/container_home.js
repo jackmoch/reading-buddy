@@ -34,6 +34,9 @@ class Home extends Component {
 
 	submitToWishlist(book) {
 		this.props.addToWishlist(book)
+			.then(() => {
+				this.props.getWishlist()
+			})
 	}
 
 	render() {
