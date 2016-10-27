@@ -9,6 +9,9 @@ export const GET_CURRENTLY_READING = 'GET_CURRENTLY_READING'
 export const ADD_TO_WISHLIST = 'ADD_TO_WISHLIST'
 export const REMOVE_FROM_WISHLIST = 'REMOVE_FROM_WISHLIST'
 export const GET_WISHLIST = 'GET_WISHLIST'
+export const ADD_TO_COMPLETED = 'ADD_TO_COMPLETED'
+export const REMOVE_FROM_COMPLETED = 'REMOVE_FROM_COMPLETED'
+export const GET_COMPLETED = 'GET_COMPLETED'
 
 export const ROOT_URL = 'http://localhost:3000'
 
@@ -98,6 +101,36 @@ export function getWishlist() {
 
 	return {
 		type: GET_WISHLIST,
+		payload: request
+	}
+}
+
+export function addToCompleted(bookId) {
+	const url = `${ROOT_URL}/api/addToCompleted`
+	const request = axios.post(url, {bookId})
+
+	return {
+		type: ADD_TO_COMPLETED,
+		payload: request
+	}
+}
+
+export function removeFromCompleted(bookId) {
+	const url = `${ROOT_URL}/api/removeFromCompleted`
+	const request = axios.post(url, {bookId})
+
+	return {
+		type: REMOVE_FROM_COMPLETED,
+		payload: request
+	}
+}
+
+export function getCompleted() {
+	const url = `${ROOT_URL}/api/getCompleted`
+	const request = axios.get(url)
+
+	return {
+		type: GET_COMPLETED,
 		payload: request
 	}
 }
