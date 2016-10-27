@@ -7,6 +7,7 @@ import Login from './containers/container_login'
 import Home from './containers/container_home'
 import Wishlist from './containers/container_wishlist'
 import CurrentlyReading from './containers/container_currently_reading'
+import Completed from './containers/container_completed'
 
 export default class Routes extends Component {
 	render() {
@@ -18,6 +19,7 @@ export default class Routes extends Component {
 					<Route path="home" component={Home} />
 					<Route path="wishlist" component={Wishlist} />
 					<Route path="currentlyReading" component={CurrentlyReading} />
+					<Route path="completed" component={Completed} />
 				</Route>
 			</Router >
 		)
