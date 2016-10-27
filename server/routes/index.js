@@ -6,6 +6,7 @@ const router = Router()
 const session = require('../controllers/session')
 const wishlist = require('../controllers/wishlist')
 const currentlyReading = require('../controllers/currently_reading')
+const completed = require('../controllers/completed')
 
 router.post('/register', session.register)
 
@@ -22,5 +23,11 @@ router.post('/api/addToCurrentlyReading', currentlyReading.addToCurrentlyReading
 router.post('/api/removeFromCurrentlyReading', currentlyReading.removeFromCurrentlyReading)
 
 router.get('/api/getCurrentlyReading', currentlyReading.getCurrentlyReading)
+
+router.post('/api/addToCompleted', completed.addToCompleted)
+
+router.post('/api/removeFromCompleted', completed.removeFromCompleted)
+
+router.get('/api/getCompleted', completed.getCompleted)
 
 module.exports = router
