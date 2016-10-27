@@ -14,4 +14,6 @@ router.post('/api/addToWishlist', wishlist.addToWishlist)
 
 router.get('/api/getWishlist', wishlist.getWishlist)
 
+router.post('/api/removeFromWishlist', wishlist.removeFromWishlist)
+
 module.exports = router
