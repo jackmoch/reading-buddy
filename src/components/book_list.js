@@ -2,7 +2,7 @@ import React from 'react'
 
 import Book from './book'
 
-const BookList = ({ books, parentComponent, clickedAddToWishlist, clickedRemoveFromWishlist, clickedAddToCurrentlyReading, clickedRemoveFromCurrentlyReading }) => {
+const BookList = ({ books, parentComponent, clickedAddToWishlist, clickedRemoveFromWishlist, clickedAddToCurrentlyReading, clickedRemoveFromCurrentlyReading, clickedAddToCompleted, clickedRemoveFromCompleted }) => {
 	if(books) {
 		return(
 		  <ul>
@@ -12,8 +12,10 @@ const BookList = ({ books, parentComponent, clickedAddToWishlist, clickedRemoveF
 		        {...book}
 		        parentComponent={parentComponent}
 		        clickedRemoveFromWishlist={clickedRemoveFromWishlist}
+		        clickedRemoveFromCompleted={clickedRemoveFromCompleted}
 		        clickedAddToWishlist={clickedAddToWishlist}
 		        clickedAddToCurrentlyReading={clickedAddToCurrentlyReading}
+		        clickedAddToCompleted={clickedAddToCompleted}
 		        clickedRemoveFromCurrentlyReading={clickedRemoveFromCurrentlyReading}/>
 		    )}
 		  </ul>

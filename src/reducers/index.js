@@ -6,6 +6,8 @@ import WishlistAction from './reducer_wishlist_actions'
 import Wishlist from './reducer_wishlist.js'
 import CurrentlyReadingAction from './reducer_currently_reading_actions'
 import CurrentlyReading from './reducer_currently_reading.js'
+import Completed from './reducer_completed'
+import CompletedAction from './reducer_completed_actions'
 
 const rootReducer = combineReducers({
   userRegister: RegisterUser,
@@ -15,6 +17,8 @@ const rootReducer = combineReducers({
   Wishlist: Wishlist,
   currentlyReadingAction: CurrentlyReadingAction,
   CurrentlyReading: CurrentlyReading,
+  Completed: Completed,
+  completedAction: CompletedAction
 });
 
 export default rootReducer;

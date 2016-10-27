@@ -13,5 +13,6 @@ module.exports = mongoose.model('user', {
   first_name: String,
   last_name: String,
   wishlist: Array,
-  currently_reading: Array
+  currently_reading: Array,
+  completed: Array
 })
