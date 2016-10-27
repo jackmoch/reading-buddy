@@ -7,6 +7,8 @@ const session = require('express-session')
 const RedisStore = require('connect-redis')(session)
 const routes = require('./routes')
 
+const debug = true
+
 const app = express()
 const port = process.env.PORT || 3000
 
@@ -18,6 +20,7 @@ app.use(webpackMiddleware(webpack({
   // webpack options
   // webpackMiddleware takes a Compiler object as first parameter
   // which is returned by webpack(...) without callback.
+  devtool: debug ? "inline-sourcemap" : null,
   entry: "./src/index.js",
   output: {
     path: __dirname,
