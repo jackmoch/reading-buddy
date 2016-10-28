@@ -62,24 +62,12 @@ class Home extends Component {
 					<div className="panel panel-default">
 						<SearchBar onSearchTermChange={this.bookSearch.bind(this)} />
 						<input onClick={this.formatSearch.bind(this)} type="submit" value="Search" className="btn btn-info btn-block" />
-						<Link to="wishlist" className="btn btn-info btn-block">
-							Wishlist
-						</Link>
-						<Link to="currentlyReading" className="btn btn-info btn-block">
-							CurrentlyReading
-						</Link>
-						<Link to="completed" className="btn btn-info btn-block">
-							Completed
-						</Link>
 						<BookList 
 							books={this.props.searchedBooks} 
 							parentComponent={'home'}
 							clickedAddToWishlist={ book => this.submitToWishlist(book)}
 							clickedAddToCurrentlyReading={ book => this.submitToCurrentlyReading(book) }
 							clickedAddToCompleted={ book => this.submitToCompleted(book) }/>
-						<Link to="home" className="btn btn-info btn-block">
-							Home
-						</Link>
 					</div>
 				</div>
 			</div>	
