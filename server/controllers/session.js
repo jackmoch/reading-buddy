@@ -56,3 +56,18 @@ module.exports.login = ({ session, body: { username, password } }, res, err) => 
        }
       })
 }
+
+module.exports.getUser = ({ session }, res, err) => {
+  if(session.userId) {
+    res.json(session.userId)
+  } else {
+    res.json()
+  }
+}
+
+module.exports.logout = ({ session }, res, err) => {
+  session.destroy((err) => {
+    if(err) throw err
+    res.json()
+  })
+}
