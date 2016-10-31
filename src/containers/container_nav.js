@@ -1,14 +1,26 @@
 
 import React, { Component } from 'react'
-import { Link } from 'react-router'
+import { Link, browserHistory } from 'react-router'
 import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { getUser, logout } from '../actions/index'
 
 class Nav extends Component {
+
+  componentWillMount() {
+    this.props.getUser()
+  }
+
+  submitLogout() {
+    this.props.logout()
+      .then(() => {
+          browserHistory.push('/')
+        })
+  }
 
   render() {
     return (
       <nav className="navbar navbar-default" role="navigation">
-        <div className="container">
           <div className="navbar-header">
             <button type="button" className="navbar-toggle" data-toggle="collapse" data-target="#navbar-brand-centered">
               <span className="sr-only">Toggle navigation</span>
@@ -17,7 +29,7 @@ class Nav extends Component {
               <span className="icon-bar"></span>
             </button>
 
-            <div className="navbar-brand navbar-brand-centered">Brand</div>
+            <div className="navbar-brand navbar-brand-centered">Reading Buddy</div>
             </div>
 
             <div className="collapse navbar-collapse" id="navbar-brand-centered">
@@ -30,12 +42,11 @@ class Nav extends Component {
             </ul> : null }
 
             { this.props.User ? <ul className="nav navbar-nav navbar-right">
-              <li><Link to={'/'} className="navbar-right">Logout</Link></li>
+              <li><a className="navbar-right logoutLink" onClick={this.submitLogout.bind(this)}>Logout</a></li>
             </ul> : null }
             
 
           </div>
-        </div>
       </nav>
     )
   }
@@ -45,4 +56,8 @@ function mapStateToProps(state) {
   return { User: state.User }
 }
 
-export default connect(mapStateToProps, null)(Nav)
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ getUser, logout }, dispatch)
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Nav)
