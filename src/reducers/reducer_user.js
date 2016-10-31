@@ -1,4 +1,4 @@
-import { REGISTER_USER, LOGIN } from '../actions/index'
+import { REGISTER_USER, LOGIN, GET_USER, LOGOUT } from '../actions/index'
 
 export default function(state = null, action) {
 	switch (action.type) {
@@ -6,6 +6,12 @@ export default function(state = null, action) {
 			return action.payload.data
 		break
 		case LOGIN: 
+			return action.payload.data
+		break
+		case GET_USER:
+			return action.payload.data
+		break 
+		case LOGOUT:
 			return action.payload.data
 	}
 	return state
