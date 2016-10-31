@@ -2,6 +2,8 @@ import axios from 'axios'
 
 export const REGISTER_USER = 'REGISTER_USER'
 export const LOGIN = 'LOGIN'
+export const LOGOUT = 'LOGOUT'
+export const GET_USER = 'GET_USER'
 export const SEARCH_BOOKS = 'SEARCH_BOOKS'
 export const ADD_TO_CURRENTLY_READING = 'ADD_TO_CURRENTLY_READING'
 export const REMOVE_FROM_CURRENTLY_READING = 'REMOVE_FROM_CURRENTLY_READING'
@@ -31,6 +33,26 @@ export function login(user) {
 
 	return{
 		type: LOGIN,
+		payload: request
+	}
+}
+
+export function logout() {
+	const url = `${ROOT_URL}/logout`
+	const request = axios.post(url)
+
+	return {
+		type: LOGOUT,
+		payload: request
+	}
+}
+
+export function getUser() {
+	const url = `${ROOT_URL}/getUser`
+	const request = axios.get(url)
+
+	return {
+		type: GET_USER,
 		payload: request
 	}
 }

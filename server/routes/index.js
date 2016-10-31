@@ -12,6 +12,10 @@ router.post('/register', session.register)
 
 router.post('/login', session.login)
 
+router.get('/getUser', session.getUser)
+
+router.post('/logout', session.logout)
+
 router.post('/api/addToWishlist', wishlist.addToWishlist)
 
 router.post('/api/removeFromWishlist', wishlist.removeFromWishlist)
