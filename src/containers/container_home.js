@@ -10,6 +10,7 @@ import BookList from '../components/book_list'
 class Home extends Component {
 
 	componentWillMount() {
+		this.submitSearch('The old man and the sea')
 		this.props.getWishlist()
 		this.props.getCurrentlyReading()
 		this.props.getCompleted()
@@ -58,16 +59,28 @@ class Home extends Component {
 	render() {
 		return(
 			<div className="row centered-form">
-				<div className="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
-					<div className="panel panel-default">
-						<SearchBar onSearchTermChange={this.bookSearch.bind(this)} />
-						<input onClick={this.formatSearch.bind(this)} type="submit" value="Search" className="btn btn-info btn-block" />
-						<BookList 
-							books={this.props.searchedBooks} 
-							parentComponent={'home'}
-							clickedAddToWishlist={ book => this.submitToWishlist(book)}
-							clickedAddToCurrentlyReading={ book => this.submitToCurrentlyReading(book) }
-							clickedAddToCompleted={ book => this.submitToCompleted(book) }/>
+				<div className="col-xs-12 col-md-10 col-md-offset-1">
+        	<div id="custom-search-input">
+            <div className="input-group col-md-12">
+								<SearchBar onSearchTermChange={this.bookSearch.bind(this)} />
+                <span className="input-group-btn">
+										<button onClick={this.formatSearch.bind(this)} className="btn btn-info btn-lg" type="button">
+                        <i className="glyphicon glyphicon-search"></i>
+										</button>
+                </span>
+            </div>
+        	</div>
+				</div>
+				<div className="row centered-form">
+					<div className="col-xs-12 col-md-10 col-md-offset-1">
+						<div className="panel panel-default">
+							<BookList 
+								books={this.props.searchedBooks} 
+								parentComponent={'home'}
+								clickedAddToWishlist={ book => this.submitToWishlist(book)}
+								clickedAddToCurrentlyReading={ book => this.submitToCurrentlyReading(book) }
+								clickedAddToCompleted={ book => this.submitToCompleted(book) }/>
+						</div>
 					</div>
 				</div>
 			</div>	
