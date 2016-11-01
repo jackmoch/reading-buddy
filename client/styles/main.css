@@ -46,3 +46,30 @@ body{
     cursor: pointer;
     margin-right: 10px;
 }
+
+ul {
+    list-style: none;
+}
+
+.bookListContainer {
+    padding: 10px;
+}
+
+.bookThumb {
+    margin: 0 auto;
+    height: 180px;
+    width: 120px;
+}
+
+.bookTitle, .bookAuthor {
+    margin: 10px 0;
+}
+
+.bookDiv {
+    padding: 0;
+    margin: 0;
+}
+
+.searchDiv {
+    padding: 0;
+}

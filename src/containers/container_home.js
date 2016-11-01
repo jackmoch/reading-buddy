@@ -59,7 +59,7 @@ class Home extends Component {
 	render() {
 		return(
 			<div className="row centered-form">
-				<div className="col-xs-12 col-md-10 col-md-offset-1">
+				<div className="col-md-10 col-md-offset-1 searchDiv">
         	<div id="custom-search-input">
             <div className="input-group col-md-12">
 								<SearchBar onSearchTermChange={this.bookSearch.bind(this)} />
@@ -71,19 +71,17 @@ class Home extends Component {
             </div>
         	</div>
 				</div>
-				<div className="row centered-form">
-					<div className="col-xs-12 col-md-10 col-md-offset-1">
-						<div className="panel panel-default">
-							<BookList 
-								books={this.props.searchedBooks} 
-								parentComponent={'home'}
-								clickedAddToWishlist={ book => this.submitToWishlist(book)}
-								clickedAddToCurrentlyReading={ book => this.submitToCurrentlyReading(book) }
-								clickedAddToCompleted={ book => this.submitToCompleted(book) }/>
-						</div>
+				<div className="centered-form">
+					<div className="col-xs-12 col-md-10 col-md-offset-1 panel panel-default bookListContainer">
+						<BookList 
+							books={this.props.searchedBooks} 
+							parentComponent={'home'}
+							clickedAddToWishlist={ book => this.submitToWishlist(book)}
+							clickedAddToCurrentlyReading={ book => this.submitToCurrentlyReading(book) }
+							clickedAddToCompleted={ book => this.submitToCompleted(book) }/>
 					</div>
 				</div>
-			</div>	
+			</div>
 		)
 	}
 }
