@@ -36,18 +36,16 @@ class CurrentlyReading extends Component {
 
 	render() {
 		return(
-			<div className="row centered-form">
-				<div className="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
-					<div className="panel panel-default">
-						{ this.props.CurrentlyReading ? '' : <h2>...Loading Currently Reading</h2> }
-						<BookList 
-							books={this.props.CurrentlyReading} 
-							parentComponent={'currently_reading'}
-							clickedAddToWishlist={ book => this.submitToWishlist(book)}
-							clickedAddToCompleted={ book => this.submitToCompleted(book) }
-							clickedRemoveFromCurrentlyReading={ id => this.sumbitRemoveFromCurrentlyReading(id)}
-							/>
-					</div>
+			<div className="row centered-form bookListDiv">
+				<div className="row list-group panel panel-default">
+					{ this.props.CurrentlyReading ? '' : <h2>...Loading Currently Reading</h2> }
+					<BookList 
+						books={this.props.CurrentlyReading} 
+						parentComponent={'currently_reading'}
+						clickedAddToWishlist={ book => this.submitToWishlist(book)}
+						clickedAddToCompleted={ book => this.submitToCompleted(book) }
+						clickedRemoveFromCurrentlyReading={ id => this.sumbitRemoveFromCurrentlyReading(id)}
+						/>
 				</div>
 			</div>
 		)
