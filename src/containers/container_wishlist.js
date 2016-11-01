@@ -36,7 +36,7 @@ class Wishlist extends Component {
 
 	render() {
 		return(
-			<div className="row centered-form">
+			<div className="row centered-form bookListDiv">
 				<div className="row list-group panel panel-default">
 					{ this.props.Wishlist ? '' : <h2>...Loading Wishlist</h2> }
 					<BookList 

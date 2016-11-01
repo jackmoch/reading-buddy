@@ -71,7 +71,7 @@ class Home extends Component {
             </div>
         	</div>
 				</div>
-				<div className="centered-form">
+				<div className="centered-form bookListDiv">
 					<div className="row list-group panel panel-default">
 						<BookList 
 							books={this.props.searchedBooks} 

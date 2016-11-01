@@ -27,7 +27,7 @@ class CurrentlyReading extends Component {
 
 	render() {
 		return(
-			<div className="row centered-form">
+			<div className="row centered-form bookListDiv">
 				<div className="row list-group panel panel-default">
 					{ this.props.Completed ? '' : <h2>...Loading Completed</h2> }
 					<BookList 

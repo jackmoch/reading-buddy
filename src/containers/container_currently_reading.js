@@ -36,7 +36,7 @@ class CurrentlyReading extends Component {
 
 	render() {
 		return(
-			<div className="row centered-form">
+			<div className="row centered-form bookListDiv">
 				<div className="row list-group panel panel-default">
 					{ this.props.CurrentlyReading ? '' : <h2>...Loading Currently Reading</h2> }
 					<BookList 
