@@ -6,8 +6,9 @@ body{
 }
 
 .centered-form .panel{
-	background: rgba(255, 255, 255, 0.8);
+	background: rgba(255, 255, 255, 0.3);
 	box-shadow: rgba(0, 0, 0, 0.3) 20px 20px 20px;
+    border: none;
 }
 
 #custom-search-input{
@@ -65,20 +66,26 @@ ul {
     margin: 10px 0;
 }
 
-.bookDiv {
-    padding: 0;
-    margin: 0;
-}
-
 .searchDiv {
     padding: 0;
 }
 
 .thumbnail {
-    min-height: 400px;
+    min-height: 450px;
     margin-top: 20px;
 }
 
 .list-group-image {
     padding: 10px 0 0 0;
+}
+
+.bookBtn {
+    margin: 5px 0;
+    background-color: #bda27e;
+    border-color: white;
+}
+
+.bookListDiv {
+    background-image: url('https://images.freecreatives.com/wp-content/uploads/2016/03/Old-taped-Book-Pages-Texture.jpg');
+    background-repeat: repeat-y;
 }
