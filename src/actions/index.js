@@ -58,7 +58,7 @@ export function getUser() {
 }
 
 export function searchBooks(searchTerm) {
-	const url = `https://www.googleapis.com/books/v1/volumes?q=${searchTerm}&maxResults=10`
+	const url = `https://www.googleapis.com/books/v1/volumes?q=${searchTerm}&maxResults=1`
 	const request = axios.get(url)
 
 	return {
