@@ -37,16 +37,14 @@ class Wishlist extends Component {
 	render() {
 		return(
 			<div className="row centered-form">
-				<div className="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
-					<div className="panel panel-default">
-						{ this.props.Wishlist ? '' : <h2>...Loading Wishlist</h2> }
-						<BookList 
-							books={this.props.Wishlist} 
-							parentComponent={'wishlist'}
-							clickedAddToCurrentlyReading={ book => this.submitToCurrentlyReading(book) }
-							clickedAddToCompleted={ book => this.submitToCompleted(book) }
-							clickedRemoveFromWishlist={ id => this.sumbitRemoveFromWishlist(id)}/>
-					</div>
+				<div className="row list-group panel panel-default">
+					{ this.props.Wishlist ? '' : <h2>...Loading Wishlist</h2> }
+					<BookList 
+						books={this.props.Wishlist} 
+						parentComponent={'wishlist'}
+						clickedAddToCurrentlyReading={ book => this.submitToCurrentlyReading(book) }
+						clickedAddToCompleted={ book => this.submitToCompleted(book) }
+						clickedRemoveFromWishlist={ id => this.sumbitRemoveFromWishlist(id)}/>
 				</div>
 			</div>
 		)
