@@ -73,3 +73,12 @@ ul {
 .searchDiv {
     padding: 0;
 }
+
+.thumbnail {
+    min-height: 400px;
+    margin-top: 20px;
+}
+
+.list-group-image {
+    padding: 10px 0 0 0;
+}
