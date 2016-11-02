@@ -1,5 +1,4 @@
 const express = require('express')
-const webpackMiddleware = require("webpack-dev-middleware")
 const webpackConfig = require('../webpack.config.js')
 const webpack = require('webpack')
 const { json } = require('body-parser')
@@ -8,8 +7,6 @@ const session = require('express-session')
 const RedisStore = require('connect-redis')(session)
 var history = require('connect-history-api-fallback');
 const routes = require('./routes')
-
-const debug = true
 
 const app = express()
 app.use(history())
@@ -21,15 +18,18 @@ app.get('*', (_req, res) => {
 
 app.set('port', port)
 
-app.use(express.static('client'))
-app.use(json())
-app.use(webpackMiddleware(webpack(webpackConfig), {
-    watchOptions: {
-        aggregateTimeout: 300,
-        poll: true
-    },
-    publicPath: "/assets/",
-}));
+if(!process.NODE_ENV) {
+  const webpackMiddleware = require("webpack-dev-middleware")
+  app.use(express.static('client'))
+  app.use(json())
+  app.use(webpackMiddleware(webpack(webpackConfig), {
+      watchOptions: {
+          aggregateTimeout: 300,
+          poll: true
+      },
+      publicPath: "/assets/",
+  }));
+}
 
 app.use(session({
   'store': new RedisStore({
