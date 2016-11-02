@@ -17,11 +17,11 @@ app.get('*', (_req, res) => {
 });
 
 app.set('port', port)
+app.use(express.static('client'))
+app.use(json())
 
-if(!process.NODE_ENV) {
+if(process.env.NODE_ENV !== 'production') {
   const webpackMiddleware = require("webpack-dev-middleware")
-  app.use(express.static('client'))
-  app.use(json())
   app.use(webpackMiddleware(webpack(webpackConfig), {
       watchOptions: {
           aggregateTimeout: 300,
