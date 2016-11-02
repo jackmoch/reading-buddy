@@ -33,10 +33,13 @@ class Login extends Component {
 		event.preventDefault()
 		this.props.login(this.state.user)
 		.then(({payload}) => {
-			if(payload.data.msg) {
+			if(payload.data === '') {
 				this.setState({
-					...this.state,
-					existingUser: payload.data.msg
+					user: {
+						username: '',
+						password: ''
+					},
+					existingUser: ''
 				})
 			} else {
 				this.setState({ 
@@ -57,7 +60,7 @@ class Login extends Component {
 					<div className="panel panel-default">
 						<div className="panel-heading">
 							<h3 className="panel-title">Log In To Reading Buddy</h3>
-							{ this.state.existingUser ? <div>{this.state.existingUser}</div> : ''}
+							{ this.state.existingUser === '' ? <div>User Not Found</div> : ''}
 						</div>
 
 						<div className="panel-body">
