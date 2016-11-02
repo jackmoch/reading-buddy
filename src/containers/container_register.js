@@ -35,10 +35,15 @@ class Register extends Component {
 		event.preventDefault()
 		this.props.registerUser(this.state.user)
 		.then(({payload}) => {
-			if(payload.data.msg) {
+			if(payload.data === null) {
 				this.setState({
-					...this.state,
-					existingUser: payload.data.msg
+				user: {
+					first_name: '',
+					last_name: '',
+					username: '',
+					password: ''
+				},
+					existingUser: ''
 				})
 			} else {
 				browserHistory.push('/home')
@@ -61,7 +66,7 @@ class Register extends Component {
 					<div className="panel panel-default">
 						<div className="panel-heading">
 							<h3 className="panel-title">Sign up for Reading Buddy</h3>
-							{ this.state.existingUser ? <div>{this.state.existingUser}</div> : ''}
+							{ this.state.existingUser === '' ? <div>User Already Registered</div> : ''}
 						</div>
 
 						<div className="panel-body">
