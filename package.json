@@ -45,5 +45,8 @@
   },
   "devDependencies": {
     "webpack-dev-middleware": "^1.8.4"
+  },
+  "engines" : { 
+    "node" : "6.5.0" 
   }
 }
