@@ -7,7 +7,7 @@ module.exports.register = ({ session, body: { username, password, first_name, la
   User.findOne({ username })
     .then(user => {
       if (user) {
-        res.json({ msg: 'User is already registered' })
+        res.json(null)
       } else {
         return new Promise((resolve, reject) => {
           bcrypt.hash(password, 15, (err, hash) => {
@@ -44,7 +44,7 @@ module.exports.login = ({ session, body: { username, password } }, res, err) => 
            })
          )
        } else {
-         res.send({ msg: 'Username does not exist in our system' })
+         res.send(null)
        }
      })
      .then((matches) => {
@@ -52,7 +52,7 @@ module.exports.login = ({ session, body: { username, password } }, res, err) => 
          session.userId = loggedInUser.id
          res.json(loggedInUser.id)
        } else {
-         res.send({ msg: 'Password does not match' })
+         res.send(null)
        }
       })
 }
