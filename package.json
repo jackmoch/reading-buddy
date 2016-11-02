@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start": "node server/server.js",
-    "postinstall": "webpack -p --config ./webpack.production.config.js"
+    "postinstall": "webpack -p --config ./webpack.production.config.js && node_modules/bower/bin/bower install"
   },
   "repository": {
     "type": "git",
@@ -46,7 +46,7 @@
   "devDependencies": {
     "webpack-dev-middleware": "^1.8.4"
   },
-  "engines" : { 
-    "node" : "6.5.0" 
+  "engines": {
+    "node": "6.5.0"
   }
 }
