@@ -1,8 +1,8 @@
 # Reading Buddy - Back-End Capstone Project
-## ![React](img/react "React")
-## ![Redux](img/redux.png "Redux")
-## ![Nodejs](img/nodejs.png "Nodejs")
-## ![Mongo](img/mongo.png "Mongo")
+## ![React](img/react.png =100x20 "React")
+## ![Redux](img/redux.png =100x20 "Redux")
+## ![Nodejs](img/nodejs.png =100x20 "Nodejs")
+## ![Mongo](img/mongo.png =100x20 "Mongo")
 ### [NSS](http://nashvillesoftwareschool.com/) Cohort D14
 ### Instructor - [Scott Humphries](https://github.com/sscotth) 
 ### Advisors - [Caitlin Stein](https://github.com/C-Stein) & [Callan Morrison](https://github.com/morecallan)
