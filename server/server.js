@@ -13,7 +13,7 @@ app.use(history())
 const port = process.env.PORT || 3000
 
 app.get('*', (_req, res) => {
-  res.sendFile(path.join(__dirname, 'app/index.html'));
+  res.sendFile(path.join(__dirname, 'client/index.html'));
 });
 
 app.set('port', port)
