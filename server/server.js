@@ -15,6 +15,10 @@ const app = express()
 app.use(history())
 const port = process.env.PORT || 3000
 
+app.get('*', (_req, res) => {
+  res.sendFile(path.join(__dirname, 'app/index.html'));
+});
+
 app.set('port', port)
 
 app.use(express.static('client'))
