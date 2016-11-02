@@ -1,5 +1,6 @@
+const path = require('path')
 const express = require('express')
-const webpackMiddleware = require("webpack-dev-middleware")
+const webpackConfig = require('../webpack.config.js')
 const webpack = require('webpack')
 const { json } = require('body-parser')
 const { connect } = require('./db/database')
@@ -8,43 +9,26 @@ const RedisStore = require('connect-redis')(session)
 var history = require('connect-history-api-fallback');
 const routes = require('./routes')
 
-const debug = true
-
 const app = express()
 app.use(history())
 const port = process.env.PORT || 3000
 
-app.set('port', port)
 
+
+app.set('port', port)
 app.use(express.static('client'))
 app.use(json())
-app.use(webpackMiddleware(webpack({
-  // webpack options
-  // webpackMiddleware takes a Compiler object as first parameter
-  // which is returned by webpack(...) without callback.
-  devtool: debug ? "inline-sourcemap" : null,
-  entry: "./src/index.js",
-  output: {
-    path: __dirname,
-    filename: 'bundle.js'
-	},
-	module: {
-    loaders: [{
-    	test: /\.js$/,
-      exclude: /node_modules/,
-      loader: 'babel',
-      query: {
-        presets: ['react', 'latest', 'stage-0']
-      }
-    }]
-  },
-}), {
-    watchOptions: {
-        aggregateTimeout: 300,
-        poll: true
-    },
-    publicPath: "/assets/",
-}));
+
+if(process.env.NODE_ENV !== 'production') {
+  const webpackMiddleware = require("webpack-dev-middleware")
+  app.use(webpackMiddleware(webpack(webpackConfig), {
+      watchOptions: {
+          aggregateTimeout: 300,
+          poll: true
+      },
+      publicPath: "/assets/",
+  }));
+}
 
 app.use(session({
   'store': new RedisStore({

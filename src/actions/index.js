@@ -15,7 +15,7 @@ export const ADD_TO_COMPLETED = 'ADD_TO_COMPLETED'
 export const REMOVE_FROM_COMPLETED = 'REMOVE_FROM_COMPLETED'
 export const GET_COMPLETED = 'GET_COMPLETED'
 
-export const ROOT_URL = 'http://localhost:3000'
+export const ROOT_URL = 'https://reading-buddy.herokuapp.com'
 
 export function registerUser(user) {
 	const url = `${ROOT_URL}/register`
@@ -58,7 +58,7 @@ export function getUser() {
 }
 
 export function searchBooks(searchTerm) {
-	const url = `https://www.googleapis.com/books/v1/volumes?q=${searchTerm}&maxResults=1`
+	const url = `https://www.googleapis.com/books/v1/volumes?q=${searchTerm}&maxResults=10`
 	const request = axios.get(url)
 
 	return {
