@@ -1,5 +1,5 @@
 # Reading Buddy - Back-End Capstone Project
-## ![React](img/react.png)
+## ![React](img/react .png)
 ## ![Redux](img/redux.png)
 ## ![Nodejs](img/nodejs.png)
 ## ![Mongo](img/mongo.png)
