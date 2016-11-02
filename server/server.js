@@ -1,5 +1,6 @@
 const express = require('express')
 const webpackMiddleware = require("webpack-dev-middleware")
+const webpackConfig = require('../webpack.config.js')
 const webpack = require('webpack')
 const { json } = require('body-parser')
 const { connect } = require('./db/database')
@@ -18,27 +19,7 @@ app.set('port', port)
 
 app.use(express.static('client'))
 app.use(json())
-app.use(webpackMiddleware(webpack({
-  // webpack options
-  // webpackMiddleware takes a Compiler object as first parameter
-  // which is returned by webpack(...) without callback.
-  devtool: debug ? "inline-sourcemap" : null,
-  entry: "./src/index.js",
-  output: {
-    path: __dirname,
-    filename: 'bundle.js'
-	},
-	module: {
-    loaders: [{
-    	test: /\.js$/,
-      exclude: /node_modules/,
-      loader: 'babel',
-      query: {
-        presets: ['react', 'latest', 'stage-0']
-      }
-    }]
-  },
-}), {
+app.use(webpackMiddleware(webpack(webpackConfig), {
     watchOptions: {
         aggregateTimeout: 300,
         poll: true
