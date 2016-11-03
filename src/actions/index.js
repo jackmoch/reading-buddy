@@ -15,7 +15,7 @@ export const ADD_TO_COMPLETED = 'ADD_TO_COMPLETED'
 export const REMOVE_FROM_COMPLETED = 'REMOVE_FROM_COMPLETED'
 export const GET_COMPLETED = 'GET_COMPLETED'
 
-export const ROOT_URL = 'https://reading-buddy.herokuapp.com'
+export const ROOT_URL = 'http://reading-buddy.herokuapp.com'
 
 export function registerUser(user) {
 	const url = `${ROOT_URL}/register`
